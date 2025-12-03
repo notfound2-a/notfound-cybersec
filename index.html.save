@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio Cybersecurity - 404 NOT FOUND CYBER SECURITY</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    /* Reset dasar */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
+    body { background:#0f111a; color:#f0f0f0; line-height:1.6; scroll-behavior:smooth;}
+    a{text-decoration:none; color:inherit;}
+
+    /* Header & Logo */
+    header{background:#1a1c2a; padding:30px 0; text-align:center; box-shadow:0 4px 6px rgba(0,0,0,0.3); position:sticky; top:0; z-index:1000;}
+    .logo-container {display:flex; justify-content:center; align-items:center; gap:15px;}
+    .logo-container svg {width:60px; height:60px; animation: glow 2s infinite alternate;}
+    @keyframes glow {
+        0% {filter: drop-shadow(0 0 5px #00ffab);}
+        50% {filter: drop-shadow(0 0 15px #00ffff);}
+        100% {filter: drop-shadow(0 0 5px #00ffab);}
+    }
+    header h1{font-size:2rem; color:#00ffab; margin-top:10px; text-shadow:0 0 5px #00ffab,0 0 10px #00ffff;}
+    header .typing{color:#f0f0f0; font-size:1.2rem; font-weight:500; margin-top:5px; height:25px;}
+
+    nav{margin-top:15px;}
+    nav a{margin:0 15px; font-weight:500; color:#f0f0f0; transition:color 0.3s;}
+    nav a:hover{color:#00ffab;}
+    .social{margin-top:15px;}
+    .social a{margin:0 10px; color:#f0f0f0; font-size:1.5rem; transition:color 0.3s;}
+    .social a:hover{color:#00ffab;}
+
+    /* Sections */
+    section{padding:80px 20px; max-width:1100px; margin:auto; opacity:0; transform:translateY(30px); transition:all 0.8s ease;}
+    section.visible{opacity:1; transform:translateY(0);}
+    h2{color:#00ffab; margin-bottom:25px; font-size:2rem; border-bottom:2px solid #00ffab; display:inline-block; padding-bottom:5px;}
+
+    /* About */
+    .about p{font-size:1.1rem;}
+
+    /* Skills */
+    .skills-list{display:flex; flex-wrap:wrap; gap:20px;}
+    .skills-list div{background:#1a1c2a; padding:20px; border-radius:10px; flex:1 1 calc(33% - 20px); text-align:center; transition: transform 0.3s, background-color 0.3s;}
+    .skills-list div:hover{transform:translateY(-5px); background-color:#00ffab20;}
+
+    /* Projects */
+    .projects-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
+    .project-card{background:#1a1c2a; border-radius:10px; overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; padding:25px; display:flex; align-items:center; gap:15px; cursor:pointer;}
+    .project-card:hover{transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,255,171,0.4);}
+    .project-card i{font-size:50px; color:#00ffab; flex-shrink:0; transition: transform 0.3s, color 0.3s;}
+    .project-card:hover i{color:#00ffff; transform:scale(1.2) rotate(10deg);}
+    .project-card .content{flex:1;}
+    .project-card h3{margin-bottom:10px; color:#00ffab;}
+    .project-card p{font-size:0.95rem; color:#ccc;}
+
+    /* Contact */
+    .contact form{display:flex; flex-direction:column; gap:15px; max-width:500px; margin:auto;}
+    .contact input,.contact textarea{padding:12px; border:none; border-radius:5px; background:#1a1c2a; color:#f0f0f0; font-size:1rem;}
+    .contact button{padding:12px; border:none; border-radius:5px; background:#00ffab; color:#0f111a; font-weight:bold; cursor:pointer; transition: background-color 0.3s;}
+    .contact button:hover{background:#00e896;}
+
+    /* Footer */
+    footer{text-align:center; padding:20px; background:#1a1c2a; color:#888; margin-top:40px;}
+
+    @media(max-width:768px){
+        .skills-list div{flex:1 1 100%;}
+        .project-card{flex-direction:column;text-align:center;}
+        .project-card i{margin-bottom:10px;}
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <!-- SVG Logo -->
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#00ffab" stroke-width="5" fill="none"/>
+            <line x1="20" y1="20" x2="80" y2="80" stroke="#00ffab" stroke-width="4"/>
+            <line x1="80" y1="20" x2="20" y2="80" stroke="#00ffab" stroke-width="4"/>
+        </svg>
+    </div>
+    <h1>404 NOT FOUND CYBER SECURITY</h1>
+    <div class="typing" id="typing"></div>
+    <nav>
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#projects">Proyek</a>
+        <a href="#contact">Kontak</a>
+    </nav>
+    <div class="social">
+        <a href="https://github.com/notfound2-a" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/hazdizdul-ala-89203536b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="404notfoundcybersec@protonmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+</header>
+
+<section id="about" class="about">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah profesional cybersecurity dengan pengalaman dalam penetration testing, keamanan jaringan, analisis malware, dan manajemen risiko IT. Saya berfokus pada proteksi data dan sistem dari ancaman digital yang kompleks.</p>
+</section>
+
+<section id="skills" class="skills">
+    <h2>Keahlian</h2>
+    <div class="skills-list">
+        <div>Penetration Testing</div>
+        <div>Network Security</div>
+        <div>Incident Response</div>
+        <div>Malware Analysis</div>
+        <div>Cloud Security</div>
+        <div>Cryptography</div>
+        <div>SIEM & Monitoring</div>
+        <div>Forensic Analysis</div>
+    </div>
+</section>
+
+<section id="projects" class="projects">
+    <h2>Proyek</h2>
+    <div class="projects-list">
+        <div class="project-card">
+            <i class="fas fa-bug"></i>
+            <div class="content">
+                <h3>Penetration Test Website</h3>
+                <p>Melakukan pengujian penetrasi pada website perusahaan untuk menemukan celah keamanan dan memberikan rekomendasi mitigasi.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <i class="fas fa-cloud"></i>
+            <div class="content">
+                <h3>Keamanan Cloud</h3>
+                <p>Mengimplementasikan protokol keamanan pada layanan cloud untuk mencegah akses tidak sah dan menjaga integritas data.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <i class="fas fa-shield-alt"></i>
+            <div class="content">
+                <h3>Analisis Malware</h3>
+                <p>Menganalisis malware terbaru dan membuat laporan mitigasi ancaman untuk tim IT perusahaan.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Kontak</h2>
+    <form>
+        <input type="text" placeholder="Nama Anda" required>
+        <input type="email" placeholder="Email" required>
+        <textarea rows="5" placeholder="Pesan Anda" required></textarea>
+        <button type="submit">Kirim</button>
+    </form>
+</section>
+
+<footer>
+    404_not_found. 
+   	Semua hak cipta dilindungi
+   	
+   	&copy; 2025 
+</footer>
+
+<script>
+    // Animasi typing
+    const texts=["Cybersecurity Enthusiast","Penetration Tester","Network Security Specialist","Malware Analyst"];
+    let count=0,index=0,currentText='',letter='';
+    function type(){
+        if(count===texts.length) count=0;
+        currentText=texts[count];
+        letter=currentText.slice(0,++index);
+        document.getElementById('typing').textContent=letter;
+        if(letter.length===currentText.length){
+            setTimeout(()=>{index=0; count++; type();},1500);
+        }else{setTimeout(type,150);}
+    }
+    type();
+
+    // Animasi scroll
+    const sections=document.querySelectorAll('section');
+    window.addEventListener('scroll',()=>{
+        const scrollY=window.scrollY+window.innerHeight;
+        sections.forEach(sec=>{
+            if(scrollY>sec.offsetTop+100){sec.classList.add('visible');}
+        });
+    });
+</script>
+
+</body>
+</html>
