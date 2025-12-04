@@ -44,23 +44,25 @@ header {
   transition: transform 300ms ease, box-shadow 300ms;
 }
 header.hide { transform: translateY(-120%); }
+
 .header-inner { display:flex; align-items:center; gap:18px; max-width:1100px; margin:0 auto; position:relative; }
 .logo { display:flex; align-items:center; gap:12px; }
 .brand { display:flex; flex-direction:column; line-height:1; }
 .brand h1 { font-size:1.05rem; color:var(--accent); text-shadow:0 0 8px rgba(0,255,171,0.6); }
 .brand p { font-size:0.72rem; color:var(--muted); }
+
 nav { margin-left:auto; display:flex; align-items:center; gap:14px; }
 nav a { padding:8px 10px; border-radius:8px; font-weight:500; color:var(--muted); }
 nav a:hover, nav a:focus { color:var(--accent); background:var(--glass); }
 
 .header-actions { display:flex; gap:10px; align-items:center; margin-left:12px; }
 .btn { background:var(--accent); color:#071018; padding:8px 12px; border-radius:10px; cursor:pointer; transition: all 200ms; font-weight:600; }
-.btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.06); color:#00f0ff; } /* Ganti warna tulisan */
+.btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--neon-blue); }
 .icon-btn { background:transparent; border:none; color:var(--muted); font-size:1.15rem; cursor:pointer; }
 .icon-btn[aria-pressed="true"] { color:var(--accent); }
 
 /* Sosial Media Icons */
-.socials { position:absolute; top:50%; right:12px; transform:translateY(-50%); display:flex; gap:10px; }
+.socials { display:flex; gap:12px; position:relative; }
 .socials a { color:var(--muted); font-size:1.2rem; transition: color 200ms; }
 .socials a:hover { color:var(--accent); }
 
@@ -75,13 +77,13 @@ section { padding:64px 12px; opacity:0; transform: translateY(18px); transition:
 section.visible { opacity:1; transform: translateY(0); }
 h2.section-title { color:var(--accent); font-size:1.4rem; margin-bottom:18px; }
 
-/* Cards with neon hover effect */
-.skill, .project {
-  background: rgba(17,18,26,0.95);
-  padding:20px;
-  border-radius:12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+/* Cards */
+.skill, .project { 
+  background: rgba(17,18,26,0.95); 
+  padding:20px; 
+  border-radius:12px; 
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4); 
+  transition: all 0.3s ease; 
 }
 .skill:hover, .project:hover,
 .skill:focus, .project:focus {
@@ -90,10 +92,8 @@ h2.section-title { color:var(--accent); font-size:1.4rem; margin-bottom:18px; }
   transform: translateY(-6px);
 }
 
-/* About card (hilangkan hover neon) */
+/* About card (tanpa hover neon) */
 .about .card { background: rgba(17,18,26,0.95); padding:20px; border-radius:12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
-
-/* About */
 .about p { font-size:1rem; }
 
 /* Skills */
@@ -130,7 +130,7 @@ footer { text-align:center; padding:24px 12px; color:rgba(255,255,255,0.45); }
   .hero h2{ font-size:1.5rem; }
   .row{ flex-direction:column; }
   .logo svg{ width:48px; height:48px; }
-  .socials{ top:auto; bottom:-10px; transform:none; right:12px; }
+  .socials{ justify-content:center; margin-top:8px; }
 }
 </style>
 </head>
@@ -164,14 +164,175 @@ footer { text-align:center; padding:24px 12px; color:rgba(255,255,255,0.45); }
   </div>
 </header>
 
-<!-- Hero, About, Skills, Projects, Contact tetap sama seperti sebelumnya -->
+<main>
+  <section class="hero container">
+    <h2>Halo, saya 404_NOT_FOUND — Cybersecurity Specialist</h2>
+    <div class="typing" id="typing" aria-live="polite"></div>
+    <p class="lead">Spesialis penetration testing, keamanan jaringan, analisis malware, dan digital forensics. Saya membantu menemukan dan menutup celah sebelum disalahgunakan.</p>
+  </section>
+
+  <section id="about" class="about container">
+    <h2 class="section-title">Tentang Saya</h2>
+    <div class="card">
+      <p>Saya berpengalaman melakukan penetration test aplikasi web & mobile, hardening infrastruktur cloud, analisis malware, dan response insiden. Pendekatan saya berfokus pada mitigasi nyata dan deliverable yang dapat langsung diimplementasikan.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="container">
+    <h2 class="section-title">Keahlian</h2>
+    <div class="skills-grid">
+      <div class="skill"><strong>Penetration Testing</strong> Web App, API, Mobile</div>
+      <div class="skill"><strong>Network Security</strong> IDS/IPS, VLAN, Segmentation</div>
+      <div class="skill"><strong>Incident Response</strong> Triage, Containment</div>
+      <div class="skill"><strong>Malware Analysis</strong> Static & dynamic, RE</div>
+      <div class="skill"><strong>Cloud Security</strong> AWS/GCP/Azure hardening</div>
+      <div class="skill"><strong>Cryptography</strong> Primitives & implementation review</div>
+      <div class="skill"><strong>SIEM & Monitoring</strong> Rules, threat hunting</div>
+      <div class="skill"><strong>Digital Forensics</strong> Host & network</div>
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2 class="section-title">Proyek</h2>
+    <div class="projects-grid">
+      <div class="project" tabindex="0" data-title="Penetration Test Website" data-desc="Pengujian penetrasi mendalam pada aplikasi perusahaan untuk menemukan celah kritikal." data-tags="Web,Pentest" data-links='{"demo":"#","report":"#"}'>
+        <div class="icon"><i class="fa-solid fa-bug"></i></div>
+        <h3>Penetration Test Website</h3>
+        <p>Pengujian penetrasi mendalam pada aplikasi perusahaan untuk menemukan celah kritikal.</p>
+        <div class="meta"><span class="chip">Web</span><span class="chip">Pentest</span></div>
+      </div>
+
+      <div class="project" tabindex="0" data-title="Keamanan Cloud" data-desc="Implementasi hardening pada layanan cloud berbasis Zero Trust Security." data-tags="Cloud,ZeroTrust" data-links='{"demo":"#","report":"#"}'>
+        <div class="icon"><i class="fa-solid fa-cloud"></i></div>
+        <h3>Keamanan Cloud</h3>
+        <p>Implementasi hardening pada layanan cloud berbasis Zero Trust Security.</p>
+        <div class="meta"><span class="chip">Cloud</span><span class="chip">ZeroTrust</span></div>
+      </div>
+
+      <div class="project" tabindex="0" data-title="Analisis Malware" data-desc="Menganalisis malware baru, reverse engineering, dan pembuatan laporan mitigasi." data-tags="Malware,RE" data-links='{"demo":"#","report":"#"}'>
+        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Analisis Malware</h3>
+        <p>Menganalisis malware baru, reverse engineering, dan pembuatan laporan mitigasi.</p>
+        <div class="meta"><span class="chip">Malware</span><span class="chip">RE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2 class="section-title">Kontak</h2>
+    <form id="contactForm">
+      <div class="row">
+        <input class="input" id="name" name="name" type="text" placeholder="Nama Anda">
+        <input class="input" id="email" name="email" type="email" placeholder="Email">
+      </div>
+      <textarea id="message" name="message" rows="6" placeholder="Pesan Anda"></textarea>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button type="submit" class="btn">Kirim Pesan</button>
+        <button type="button" id="mailFallback" class="btn secondary">Buka Email</button>
+      </div>
+      <div id="formStatus" aria-live="polite" style="margin-top:12px"></div>
+    </form>
+  </section>
+</main>
+
+<!-- Modal -->
+<div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitle" style="color:var(--accent)">Judul Proyek</h3>
+        <div id="modalTags" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <button class="close-btn" id="modalClose" aria-label="Tutup modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+    <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end;">
+      <a id="modalReport" class="btn secondary" href="#" target="_blank">Lihat Laporan</a>
+      <a id="modalDemo" class="btn" href="#" target="_blank">Demo / Detail</a>
+    </div>
+  </div>
+</div>
 
 <footer>
 404_not_found. Semua hak cipta dilindungi © <span id="year"></span>
 </footer>
 
 <script>
-// Script sama seperti sebelumnya: year, CV download, typing, observer, modal, contact fallback
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Download CV
+document.getElementById('downloadCv').addEventListener('click', ()=>window.open('assets/CV.pdf','_blank'));
+
+// Typing effect
+const typingTexts = ["Cybersecurity Enthusiast","Penetration Tester","Network Security"];
+(function typing(){
+  const el=document.getElementById('typing'); let tIndex=0, chIndex=0, forward=true;
+  function tick(){
+    const full=typingTexts[tIndex];
+    el.textContent=full.slice(0,chIndex);
+    if(forward){ chIndex++; if(chIndex>full.length){ forward=false; setTimeout(tick,1400); return;} }
+    else{ chIndex--; if(chIndex<0){ forward=true; tIndex=(tIndex+1)%typingTexts.length;} }
+    setTimeout(tick, forward?90:30);
+  } tick();
+})();
+
+// Section observer
+const sections=document.querySelectorAll('main section');
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, {threshold:0.12});
+sections.forEach(s=>obs.observe(s));
+
+// Header auto-hide
+(function(){
+  const header=document.getElementById('mainHeader'); let lastScroll=window.scrollY; let ticking=false;
+  function onScroll(){ if(ticking)return; ticking=true; requestAnimationFrame(()=>{ const current=window.scrollY; if(current>lastScroll && current>80){ header.classList.add('hide'); } else { header.classList.remove('hide'); } lastScroll=current; ticking=false; }); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+
+// Progress bar
+(function(){
+  const progress=document.getElementById('progress');
+  function update(){ const height=document.documentElement.scrollHeight-window.innerHeight; const percent=height>0?(window.scrollY/height*100):0; progress.style.width=percent+'%'; }
+  window.addEventListener('scroll',update,{passive:true}); window.addEventListener('resize',update); update();
+})();
+
+// Theme toggle
+(function(){
+  const btn=document.getElementById('themeToggle'); const root=document.documentElement;
+  function setMode(mode){ if(mode==='light'){ root.classList.add('light'); btn.setAttribute('aria-pressed','true'); btn.innerHTML='<i class="fa-solid fa-moon"></i>'; } else { root.classList.remove('light'); btn.setAttribute('aria-pressed','false'); btn.innerHTML='<i class="fa-solid fa-sun"></i>'; } localStorage.setItem('prefTheme',mode);}
+  const saved=localStorage.getItem('prefTheme'); setMode(saved==='light'?'light':'dark');
+  btn.addEventListener('click',()=>{ const current=root.classList.contains('light')?'dark':'light'; setMode(current); });
+})();
+
+// Project modal
+const modal=document.getElementById('modalBackdrop');
+const modalTitle=document.getElementById('modalTitle');
+const modalContent=document.getElementById('modalContent');
+const modalTags=document.getElementById('modalTags');
+const modalDemo=document.getElementById('modalDemo');
+const modalReport=document.getElementById('modalReport');
+const modalClose=document.getElementById('modalClose');
+
+document.querySelectorAll('.project').forEach(p=>{
+  p.addEventListener('click',()=>{
+    modal.classList.add('show');
+    modalTitle.textContent=p.dataset.title;
+    modalContent.textContent=p.dataset.desc;
+    const tags=p.dataset.tags.split(',');
+    modalTags.innerHTML=tags.map(t=>`<span class="chip">${t}</span>`).join('');
+    const links=JSON.parse(p.dataset.links);
+    modalDemo.href=links.demo; modalReport.href=links.report;
+  });
+});
+
+modalClose.addEventListener('click',()=>modal.classList.remove('show'));
+modal.addEventListener('click',e=>{ if(e.target===modal) modal.classList.remove('show'); });
+
+// Contact fallback
+document.getElementById('mailFallback').addEventListener('click',()=>{ window.location.href='mailto:404_not_found@example.com'; });
+document.getElementById('contactForm').addEventListener('submit',e=>{ e.preventDefault(); document.getElementById('formStatus').textContent='Terima kasih, pesan Anda terkirim!'; e.target.reset(); });
 </script>
 </body>
 </html>
