@@ -44,27 +44,20 @@ header {
   transition: transform 300ms ease, box-shadow 300ms;
 }
 header.hide { transform: translateY(-120%); }
-
-.header-inner { display:flex; align-items:center; gap:18px; max-width:1100px; margin:0 auto; position:relative; }
+.header-inner { display:flex; align-items:center; gap:18px; max-width:1100px; margin:0 auto; }
 .logo { display:flex; align-items:center; gap:12px; }
 .brand { display:flex; flex-direction:column; line-height:1; }
 .brand h1 { font-size:1.05rem; color:var(--accent); text-shadow:0 0 8px rgba(0,255,171,0.6); }
 .brand p { font-size:0.72rem; color:var(--muted); }
-
 nav { margin-left:auto; display:flex; align-items:center; gap:14px; }
 nav a { padding:8px 10px; border-radius:8px; font-weight:500; color:var(--muted); }
 nav a:hover, nav a:focus { color:var(--accent); background:var(--glass); }
 
 .header-actions { display:flex; gap:10px; align-items:center; margin-left:12px; }
-.btn { background:var(--accent); color:#071018; padding:8px 12px; border-radius:10px; cursor:pointer; transition: all 200ms; font-weight:600; }
-.btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--neon-blue); }
+.btn { background:var(--accent); color:#071018; padding:8px 12px; border-radius:10px; cursor:pointer; transition: all 200ms; }
+.btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.06); }
 .icon-btn { background:transparent; border:none; color:var(--muted); font-size:1.15rem; cursor:pointer; }
 .icon-btn[aria-pressed="true"] { color:var(--accent); }
-
-/* Sosial Media Icons */
-.socials { display:flex; gap:12px; position:relative; }
-.socials a { color:var(--muted); font-size:1.2rem; transition: color 200ms; }
-.socials a:hover { color:var(--accent); }
 
 /* Hero */
 .hero { padding:56px 12px 10px; text-align:center; }
@@ -77,23 +70,22 @@ section { padding:64px 12px; opacity:0; transform: translateY(18px); transition:
 section.visible { opacity:1; transform: translateY(0); }
 h2.section-title { color:var(--accent); font-size:1.4rem; margin-bottom:18px; }
 
-/* Cards */
-.skill, .project { 
-  background: rgba(17,18,26,0.95); 
-  padding:20px; 
-  border-radius:12px; 
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4); 
-  transition: all 0.3s ease; 
+/* Cards with neon hover effect */
+.card, .skill, .project {
+  background: rgba(17,18,26,0.95);
+  padding:20px;
+  border-radius:12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
 }
-.skill:hover, .project:hover,
-.skill:focus, .project:focus {
+.card:hover, .skill:hover, .project:hover,
+.card:focus-within, .skill:focus, .project:focus {
   background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(0,255,171,0.15));
   box-shadow: 0 0 16px var(--neon-blue), 0 0 32px rgba(0,255,255,0.3);
   transform: translateY(-6px);
 }
 
-/* About card (tanpa hover neon) */
-.about .card { background: rgba(17,18,26,0.95); padding:20px; border-radius:12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+/* About */
 .about p { font-size:1rem; }
 
 /* Skills */
@@ -130,7 +122,6 @@ footer { text-align:center; padding:24px 12px; color:rgba(255,255,255,0.45); }
   .hero h2{ font-size:1.5rem; }
   .row{ flex-direction:column; }
   .logo svg{ width:48px; height:48px; }
-  .socials{ justify-content:center; margin-top:8px; }
 }
 </style>
 </head>
@@ -155,11 +146,6 @@ footer { text-align:center; padding:24px 12px; color:rgba(255,255,255,0.45); }
     <div class="header-actions">
       <button class="btn secondary" id="downloadCv">Download CV</button>
       <button class="icon-btn" id="themeToggle" aria-pressed="false"><i class="fa-solid fa-sun"></i></button>
-    </div>
-    <div class="socials">
-      <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
 </header>
@@ -221,7 +207,7 @@ footer { text-align:center; padding:24px 12px; color:rgba(255,255,255,0.45); }
   <section id="contact" class="container">
     <h2 class="section-title">Kontak</h2>
     <form id="contactForm">
-      <div class="row">
+      <div class="row" style="display:flex; gap:12px;">
         <input class="input" id="name" name="name" type="text" placeholder="Nama Anda">
         <input class="input" id="email" name="email" type="email" placeholder="Email">
       </div>
@@ -331,7 +317,9 @@ modalClose.addEventListener('click',()=>modal.classList.remove('show'));
 modal.addEventListener('click',e=>{ if(e.target===modal) modal.classList.remove('show'); });
 
 // Contact fallback
-document.getElementById('mailFallback').addEventListener('click',()=>{ window.location.href='mailto:404_not_found@example.com'; });
+document.getElementById('mailFallback').addEventListener('click',()=>{
+  window.location.href='mailto:404_not_found@example.com';
+});
 document.getElementById('contactForm').addEventListener('submit',e=>{ e.preventDefault(); document.getElementById('formStatus').textContent='Terima kasih, pesan Anda terkirim!'; e.target.reset(); });
 </script>
 </body>
