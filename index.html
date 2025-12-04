@@ -1,233 +1,593 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 Cybersecurity - 404 NOT FOUND CYBER SECURITY</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>404 NOT FOUND CYBER SECURITY — Portfolio</title>
+<meta name="description" content="Portfolio cybersecurity — penetration testing, malware analysis, network security, forensics. Kontak untuk konsultasi & proyek." />
+<meta name="author" content="404 NOT FOUND CYBER SECURITY" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous">
 <style>
-    /* Reset dasar */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
-    body { background:#0f111a; color:#f0f0f0; line-height:1.6; scroll-behavior:smooth; }
-    a{text-decoration:none; color:inherit;}
+  :root{
+    --bg:#0f111a;
+    --card:#11121a;
+    --muted:#bfc7cf;
+    --accent:#00ffab;
+    --accent-2:#00e896;
+    --glass: rgba(255,255,255,0.03);
+    --success: #2dd36f;
+    --danger: #ff6b6b;
+    --trans: 200ms;
+    color-scheme: dark;
+  }
 
-    /* Header & Logo */
-    header{
-        background:#1a1c2a;
-        padding:30px 0;
-        text-align:center;
-        box-shadow:0 4px 6px rgba(0,0,0,0.3);
-        position:sticky;
-        top:0;
-        z-index:1000;
-        transition:transform 0.4s ease;     /* AUTO HIDE EFFECT */
-    }
+  /* Reset & base */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family: 'Roboto', sans-serif;
+    background:var(--bg);
+    color:#e9eef5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    transition: background var(--trans), color var(--trans);
+    scroll-behavior:smooth;
+  }
 
-    /* Saat hide */
-    header.hide {
-        transform: translateY(-100%);
-    }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
 
-    .logo-container {display:flex; justify-content:center; align-items:center; margin-bottom:10px;}
-    .logo-container svg {width:60px; height:60px;}
+  /* Page wrapper */
+  .container{max-width:1100px;margin:0 auto;padding:20px}
 
-    header h1{
-        font-size:2rem;
-        color:#00ffab;
-        margin-top:10px;
-        text-shadow:0 0 5px #00ffab;
-    }
+  /* Progress bar */
+  #progress {
+    position: fixed;
+    left:0;top:0;height:4px;width:0%;
+    background: linear-gradient(90deg,var(--accent),var(--accent-2));
+    z-index:2000;transition:width 100ms linear;
+  }
 
-    header .typing{
-        color:#f0f0f0;
-        font-size:1.2rem;
-        font-weight:500;
-        margin-top:5px;
-        height:25px;
-    }
+  /* Header */
+  header{
+    background: linear-gradient(180deg, rgba(26,28,42,0.9), rgba(17,18,26,0.9));
+    backdrop-filter: blur(6px);
+    padding:18px 12px;
+    position: sticky;
+    top:0;left:0;right:0;
+    z-index:1500;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    transform: translateY(0);
+    transition: transform 300ms ease, box-shadow 300ms;
+  }
 
-    nav{margin-top:15px;}
-    nav a{margin:0 15px; font-weight:500; color:#f0f0f0; transition:color 0.3s;}
-    nav a:hover{color:#00ffab;}
+  header.hide{ transform: translateY(-120%); }
 
-    .social{margin-top:15px;}
-    .social a{margin:0 10px; color:#f0f0f0; font-size:1.5rem; transition:color 0.3s;}
-    .social a:hover{color:#00ffab;}
+  .header-inner{ display:flex;align-items:center;gap:18px; max-width:1100px;margin:0 auto }
+  .logo{
+    display:flex;align-items:center;gap:12px;
+  }
+  .logo svg{width:52px;height:52px;flex-shrink:0}
+  .brand{
+    display:flex;flex-direction:column;
+    line-height:1;
+  }
+  .brand h1{ font-size:1.05rem;color:var(--accent);text-shadow:0 0 8px rgba(0,255,171,0.08); letter-spacing:0.6px}
+  .brand p{ font-size:0.72rem;color:var(--muted) }
 
-    /* Sections */
-    section{padding:80px 20px; max-width:1100px; margin:auto; opacity:0; transform:translateY(30px); transition:all 0.8s ease;}
-    section.visible{opacity:1; transform:translateY(0);}
-    h2{color:#00ffab; margin-bottom:25px; font-size:2rem; border-bottom:2px solid #00ffab; display:inline-block; padding-bottom:5px;}
+  nav{ margin-left:auto; display:flex;align-items:center;gap:14px }
+  nav a{ padding:8px 10px;border-radius:8px;font-weight:500;color:var(--muted) }
+  nav a:hover, nav a:focus{ color:var(--accent); background:var(--glass) }
 
-    .about p{font-size:1.1rem;}
+  .header-actions{ display:flex; gap:10px; align-items:center; margin-left:12px }
+  .btn{
+    background:var(--accent); color:#071018; padding:8px 12px;border-radius:10px;font-weight:700; border:none; cursor:pointer; transition: transform 150ms;
+  }
+  .btn.secondary{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); font-weight:600 }
+  .btn:active{ transform: translateY(1px) }
 
-    /* Skills */
-    .skills-list{display:flex; flex-wrap:wrap; gap:20px;}
-    .skills-list div{background:#1a1c2a; padding:20px; border-radius:10px; flex:1 1 calc(33% - 20px); text-align:center; transition:0.3s;}
-    .skills-list div:hover{transform:translateY(-5px); background-color:#00ffab20;}
+  .icon-btn{ background:transparent;border:none;color:var(--muted);font-size:1.15rem;padding:8px;border-radius:8px;cursor:pointer }
+  .icon-btn[aria-pressed="true"]{ color:var(--accent) }
 
-    /* Projects */
-    .projects-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
-    .project-card{background:#1a1c2a; border-radius:10px; padding:20px; display:flex; align-items:center; gap:15px; transition:0.3s;}
-    .project-card:hover{transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,255,171,0.3);}
-    .project-card i{font-size:50px; color:#00ffab; transition:0.3s;}
-    .project-card:hover i{color:#00ffff; transform:scale(1.2) rotate(10deg);}
-    .project-card h3{color:#00ffab;}
-    .project-card p{color:#ccc;}
+  /* Hero / typing */
+  .hero{ padding:56px 12px 10px; text-align:center }
+  .hero h2{ color:var(--accent); font-size:2rem; margin-bottom:10px }
+  .typing{ font-size:1.05rem; color:#e6eef3; min-height:28px; margin-bottom:8px }
+  .lead{ color:var(--muted); max-width:760px;margin:0 auto }
 
-    /* Contact */
-    .contact form{display:flex; flex-direction:column; gap:15px; max-width:500px; margin:auto;}
-    .contact input,.contact textarea{padding:12px; border:none; border-radius:5px; background:#1a1c2a; color:#f0f0f0;}
-    .contact button{padding:12px; border:none; border-radius:5px; background:#00ffab; color:#0f111a; font-weight:bold; cursor:pointer;}
-    .contact button:hover{background:#00e896;}
+  /* Sections */
+  section{ padding:64px 12px; opacity:0; transform: translateY(18px); transition: all 600ms cubic-bezier(.2,.9,.2,1); }
+  section.visible{ opacity:1; transform: translateY(0) }
 
-    footer{text-align:center; padding:20px; background:#1a1c2a; color:#888; margin-top:40px;}
+  h2.section-title{ color:var(--accent); font-size:1.4rem; margin-bottom:18px; display:inline-block; border-bottom:2px solid rgba(0,255,171,0.08); padding-bottom:6px }
 
-    @media(max-width:768px){
-        .skills-list div{flex:1 1 100%;}
-        .project-card{flex-direction:column; text-align:center;}
-        .project-card i{margin-bottom:10px;}
-    }
+  /* About */
+  .about .card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px;border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); color:var(--muted) }
+  .about p{ font-size:1rem }
+
+  /* Skills */
+  .skills-grid{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px }
+  .skill{ flex:1 1 220px; background:var(--card); padding:16px;border-radius:10px; text-align:center; transition: transform 180ms, box-shadow 180ms }
+  .skill:hover{ transform: translateY(-6px); box-shadow:0 10px 30px rgba(0,255,171,0.06) }
+  .skill strong{display:block;color:var(--accent); margin-bottom:6px }
+
+  /* Projects */
+  .projects-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:12px }
+  .project{
+    background:var(--card); padding:16px; border-radius:12px; display:flex; gap:12px; align-items:flex-start;
+    transition: transform 180ms, box-shadow 180ms;
+  }
+  .project:hover{ transform: translateY(-8px); box-shadow:0 14px 40px rgba(0,255,171,0.06) }
+  .project .icon{ font-size:36px;color:var(--accent); width:54px; text-align:center }
+  .project h3{ margin-bottom:6px; color:var(--accent) }
+  .project p{ color:var(--muted); font-size:0.95rem }
+
+  .project .meta{ margin-top:8px; display:flex; gap:8px; align-items:center }
+  .chip{ font-size:0.8rem; padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02); color:var(--muted) }
+
+  /* Contact */
+  .contact form{ max-width:640px;margin:0 auto; display:flex; flex-direction:column; gap:12px }
+  .input, textarea{ background:var(--card); border:1px solid rgba(255,255,255,0.03); padding:12px;border-radius:8px;color:inherit; outline:none }
+  .input:focus, textarea:focus{ box-shadow: 0 6px 20px rgba(0,255,171,0.06); border-color: rgba(0,255,171,0.12) }
+  .row{ display:flex; gap:12px }
+  .row .input{ flex:1 }
+
+  .form-status{ text-align:center; font-weight:600; padding:8px 12px; border-radius:8px }
+
+  /* Modal */
+  .modal-backdrop{ position:fixed; inset:0; background:rgba(3,6,12,0.6); display:none; align-items:center; justify-content:center; z-index:2500; padding:20px }
+  .modal-backdrop.show{ display:flex }
+  .modal{ background: linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; max-width:820px; width:100%; padding:20px; color:var(--muted); box-shadow:0 20px 60px rgba(0,0,0,0.6) }
+  .modal .modal-header{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+  .modal .modal-content{ margin-top:12px }
+  .close-btn{ background:transparent;border:none;color:var(--muted); font-size:1.25rem; cursor:pointer }
+
+  /* Footer */
+  footer{ text-align:center; padding:24px 12px; color:rgba(255,255,255,0.45) }
+
+  /* Responsive */
+  @media(max-width:720px){
+    .header-inner{ gap:12px }
+    nav{ display:none } /* keep simple on small screens */
+    .hero h2{ font-size:1.5rem }
+    .row{ flex-direction:column }
+    .logo svg{ width:48px; height:48px }
+  }
+
+  /* Light mode overrides */
+  :root.light{
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --muted: #4b5563;
+    --accent: #006b4f;
+    color-scheme: light;
+  }
+  :root.light body{ color:#0b1220 }
+  :root.light header{ background:#ffffffcc }
 </style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
 
-<header>
-    <div class="logo-container">
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" stroke="#00ffab" stroke-width="5" fill="none"/>
-            <line x1="20" y1="20" x2="80" y2="80" stroke="#00ffab" stroke-width="5"/>
-            <line x1="80" y1="20" x2="20" y2="80" stroke="#00ffab" stroke-width="5"/>
-        </svg>
-    </div>
+<header id="mainHeader">
+  <div class="header-inner container" role="banner">
+    <a class="logo" href="#" aria-label="Homepage">
+      <svg viewBox="0 0 100 100" role="img" aria-label="404 not found logo">
+        <circle cx="50" cy="50" r="40" stroke="#00ffab" stroke-width="5" fill="none"/>
+        <line x1="20" y1="20" x2="80" y2="80" stroke="#00ffab" stroke-width="5"/>
+        <line x1="80" y1="20" x2="20" y2="80" stroke="#00ffab" stroke-width="5"/>
+      </svg>
+      <div class="brand" aria-hidden="true">
+        <h1>404 NOT FOUND CYBER SECURITY</h1>
+        <p>Cybersecurity • PenTest • Malware Analysis</p>
+      </div>
+    </a>
 
-    <h1>404 NOT FOUND CYBER SECURITY</h1>
-    <div class="typing" id="typing"></div>
-
-    <nav>
-        <a href="#about">Tentang</a>
-        <a href="#skills">Keahlian</a>
-        <a href="#projects">Proyek</a>
-        <a href="#contact">Kontak</a>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#about">Tentang</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#projects">Proyek</a>
+      <a href="#contact">Kontak</a>
     </nav>
 
-    <div class="social">
-        <a href="https://github.com/notfound2-a" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/hazdizdul-ala-89203536b" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:404notfoundcybersec@protonmail.com"><i class="fas fa-envelope"></i></a>
+    <div class="header-actions" role="toolbar" aria-label="Actions">
+      <button class="btn secondary" id="downloadCv" title="Download CV">Download CV</button>
+      <button class="icon-btn" id="themeToggle" aria-pressed="false" title="Toggle dark/light mode"><i class="fa-solid fa-sun"></i></button>
     </div>
+  </div>
 </header>
 
-<section id="about" class="about">
-    <h2>Tentang Saya</h2>
-    <p>Saya adalah profesional cybersecurity dengan pengalaman dalam penetration testing, keamanan jaringan, analisis malware, dan forensik digital.</p>
-</section>
+<main>
+  <section class="hero container" aria-labelledby="hero-title">
+    <h2 id="hero-title">Halo, saya 404_NOT_FOUND — Cybersecurity Specialist</h2>
+    <div class="typing" id="typing" aria-live="polite"></div>
+    <p class="lead">Spesialis penetration testing, keamanan jaringan, analisis malware, dan digital forensics. Saya membantu menemukan dan menutup celah sebelum disalahgunakan.</p>
+  </section>
 
-<section id="skills" class="skills">
-    <h2>Keahlian</h2>
-    <div class="skills-list">
-        <div>Penetration Testing</div>
-        <div>Network Security</div>
-        <div>Incident Response</div>
-        <div>Malware Analysis</div>
-        <div>Cloud Security</div>
-        <div>Cryptography</div>
-        <div>SIEM & Monitoring</div>
-        <div>Forensic Analysis</div>
+  <section id="about" class="about container" tabindex="-1">
+    <h2 class="section-title">Tentang Saya</h2>
+    <div class="card" role="article">
+      <p>Saya berpengalaman melakukan penetration test aplikasi web & mobile, hardening infrastruktur cloud, analisis malware, dan response insiden. Pendekatan saya berfokus pada mitigasi nyata dan deliverable yang dapat langsung diimplementasikan.</p>
     </div>
-</section>
+  </section>
 
-<section id="projects" class="projects">
-    <h2>Proyek</h2>
-    <div class="projects-list">
-        <div class="project-card">
-            <i class="fas fa-bug"></i>
-            <div class="content">
-                <h3>Penetration Test Website</h3>
-                <p>Pengujian penetrasi mendalam pada aplikasi perusahaan untuk menemukan celah kritikal.</p>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <i class="fas fa-cloud"></i>
-            <div class="content">
-                <h3>Keamanan Cloud</h3>
-                <p>Implementasi hardening pada layanan cloud berbasis Zero Trust Security.</p>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <i class="fas fa-shield-alt"></i>
-            <div class="content">
-                <h3>Analisis Malware</h3>
-                <p>Menganalisis malware baru, reverse engineering, dan pembuatan laporan mitigasi.</p>
-            </div>
-        </div>
+  <section id="skills" class="container" tabindex="-1">
+    <h2 class="section-title">Keahlian</h2>
+    <div class="skills-grid" role="list">
+      <div class="skill" role="listitem"><strong>Penetration Testing</strong> Web App, API, Mobile</div>
+      <div class="skill" role="listitem"><strong>Network Security</strong> IDS/IPS, VLAN, Segmentation</div>
+      <div class="skill" role="listitem"><strong>Incident Response</strong> Triage, Containment</div>
+      <div class="skill" role="listitem"><strong>Malware Analysis</strong> Static & dynamic, RE</div>
+      <div class="skill" role="listitem"><strong>Cloud Security</strong> AWS / GCP / Azure hardening</div>
+      <div class="skill" role="listitem"><strong>Cryptography</strong> Primitives & implementation review</div>
+      <div class="skill" role="listitem"><strong>SIEM & Monitoring</strong> Rules, threat hunting</div>
+      <div class="skill" role="listitem"><strong>Digital Forensics</strong> Host & network</div>
     </div>
-</section>
+  </section>
 
-<section id="contact" class="contact">
-    <h2>Kontak</h2>
-    <form action="mailto:alblacksweat@gmail.com" method="POST" enctype="text/plain">
-        <input type="text" placeholder="Nama Anda" required>
-        <input type="email" placeholder="Email" required>
-        <textarea rows="5" placeholder="Pesan Anda" required></textarea>
-        <button type="submit">Kirim</button>
+  <section id="projects" class="container" tabindex="-1">
+    <h2 class="section-title">Proyek</h2>
+    <div class="projects-grid" role="list">
+      <article class="project" role="listitem" tabindex="0" data-title="Penetration Test Website" data-desc="Pengujian penetrasi mendalam pada aplikasi perusahaan untuk menemukan celah kritikal, laporan riset & PoC." data-tags="Web, Pentest" data-links='{"report":"#","demo":"#"}'>
+        <div class="icon"><i class="fa-solid fa-bug"></i></div>
+        <div>
+          <h3>Penetration Test Website</h3>
+          <p>Pengujian penetrasi mendalam pada aplikasi perusahaan untuk menemukan celah kritikal.</p>
+          <div class="meta"><span class="chip">Web</span><span class="chip">Pentest</span></div>
+        </div>
+      </article>
+
+      <article class="project" role="listitem" tabindex="0" data-title="Keamanan Cloud" data-desc="Implementasi hardening pada layanan cloud berbasis Zero Trust Security, audit IAM & jaringan." data-tags="Cloud, ZeroTrust" data-links='{"report":"#","demo":"#"}'>
+        <div class="icon"><i class="fa-solid fa-cloud"></i></div>
+        <div>
+          <h3>Keamanan Cloud</h3>
+          <p>Implementasi hardening pada layanan cloud berbasis Zero Trust Security.</p>
+          <div class="meta"><span class="chip">Cloud</span><span class="chip">ZeroTrust</span></div>
+        </div>
+      </article>
+
+      <article class="project" role="listitem" tabindex="0" data-title="Analisis Malware" data-desc="Menganalisis malware baru, reverse engineering, dan pembuatan laporan mitigasi serta IOC." data-tags="Malware, RE" data-links='{"report":"#","demo":"#"}'>
+        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <h3>Analisis Malware</h3>
+          <p>Menganalisis malware baru, reverse engineering, dan pembuatan laporan mitigasi.</p>
+          <div class="meta"><span class="chip">Malware</span><span class="chip">RE</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="container" tabindex="-1">
+    <h2 class="section-title">Kontak</h2>
+    <form id="contactForm" aria-label="Formulir kontak">
+      <div class="row">
+        <input class="input" id="name" name="name" type="text" placeholder="Nama Anda" required aria-required="true" />
+        <input class="input" id="email" name="email" type="email" placeholder="Email" required aria-required="true" />
+      </div>
+      <textarea id="message" name="message" rows="6" placeholder="Pesan Anda" required aria-required="true"></textarea>
+      <div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-top:6px">
+        <button type="submit" class="btn">Kirim Pesan</button>
+        <button type="button" id="mailFallback" class="btn secondary">Buka Email</button>
+      </div>
+      <div id="formStatus" aria-live="polite" style="margin-top:12px"></div>
     </form>
-</section>
+  </section>
+</main>
+
+<!-- Modal -->
+<div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal" role="document">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitle" style="color:var(--accent)">Judul Proyek</h3>
+        <div id="modalTags" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <button class="close-btn" id="modalClose" aria-label="Tutup modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+    <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end">
+      <a id="modalReport" class="btn secondary" href="#" target="_blank">Lihat Laporan</a>
+      <a id="modalDemo" class="btn" href="#" target="_blank">Demo / Detail</a>
+    </div>
+  </div>
+</div>
 
 <footer>
-    404_not_found. Semua hak cipta dilindungi © 2025
+  404_not_found. Semua hak cipta dilindungi © <span id="year"></span>
 </footer>
 
-
 <script>
-    /* Typing animation */
-    const texts=["Cybersecurity Enthusiast","Penetration Tester","Network Security Specialist","Malware Analyst"];
-    let count=0,index=0,currentText='',letter='';
-    function type(){
-        if(count===texts.length) count=0;
-        currentText=texts[count];
-        letter=currentText.slice(0,++index);
-        document.getElementById('typing').textContent=letter;
+/* -------------------------
+   Config / Texts
+   ------------------------- */
+const typingTexts = ["Cybersecurity Enthusiast","Penetration Tester","Network Security Specialist","Malware Analyst"];
+const formsEndpoint = "https://formspree.io/f/YOUR_FORMSPREE_ID"; // TODO: Ganti YOUR_FORMSPREE_ID dengan ID Formspree-mu
 
-        if(letter.length===currentText.length){
-            setTimeout(()=>{index=0; count++; type();},1500);
-        } else {
-            setTimeout(type,150);
-        }
+/* -------------------------
+   Basic UI: year & CV
+   ------------------------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('downloadCv').addEventListener('click', ()=>{
+  // TODO: ganti 'assets/CV.pdf' dengan path file CV mu
+  window.open('assets/CV.pdf','_blank');
+});
+
+/* -------------------------
+   Typing Animation (simple)
+   ------------------------- */
+(function typing(){
+  const el = document.getElementById('typing');
+  let tIndex = 0, chIndex = 0, typingForward = true;
+  function tick(){
+    const full = typingTexts[tIndex];
+    el.textContent = full.slice(0, chIndex);
+    if (typingForward) {
+      chIndex++;
+      if (chIndex > full.length) {
+        typingForward = false;
+        setTimeout(tick, 1400);
+        return;
+      }
+    } else {
+      chIndex--;
+      if (chIndex < 0) {
+        typingForward = true;
+        tIndex = (tIndex + 1) % typingTexts.length;
+      }
     }
-    type();
+    setTimeout(tick, typingForward ? 90 : 30);
+  }
+  tick();
+})();
 
-    /* Section scroll animation */
-    const sections=document.querySelectorAll('section');
-    window.addEventListener('scroll',()=>{
-        const scrollY=window.scrollY+window.innerHeight;
-        sections.forEach(sec=>{
-            if(scrollY>sec.offsetTop+100){sec.classList.add('visible');}
-        });
+/* -------------------------
+   IntersectionObserver for sections
+   ------------------------- */
+const sections = document.querySelectorAll('main section');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+sections.forEach(s => obs.observe(s));
+
+/* -------------------------
+   Header auto-hide (debounced)
+   ------------------------- */
+(function headerHide(){
+  const header = document.getElementById('mainHeader');
+  let lastScroll = window.scrollY;
+  let ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(()=> {
+      const current = window.scrollY;
+      if (current > lastScroll && current > 80) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = current;
+      ticking = false;
     });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
 
-    /* AUTO HIDE HEADER */
-    let lastScroll = 0;
-    const header = document.querySelector("header");
+/* -------------------------
+   Scroll progress bar
+   ------------------------- */
+(function progressBar(){
+  const progress = document.getElementById('progress');
+  function update(){
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = height > 0 ? (window.scrollY / height * 100) : 0;
+    progress.style.width = percent + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
 
-    window.addEventListener("scroll", () => {
-        let current = window.scrollY;
+/* -------------------------
+   Theme toggle (dark/light) persisted
+   ------------------------- */
+(function themeToggle(){
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  function setMode(mode){
+    if (mode === 'light') {
+      root.classList.add('light');
+      btn.setAttribute('aria-pressed','true');
+      btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    } else {
+      root.classList.remove('light');
+      btn.setAttribute('aria-pressed','false');
+      btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+    localStorage.setItem('prefTheme', mode);
+  }
+  const saved = localStorage.getItem('prefTheme');
+  setMode(saved === 'light' ? 'light' : 'dark');
 
-        if (current > lastScroll && current > 80) {
-            header.classList.add("hide");  // scroll down → hide
-        } else {
-            header.classList.remove("hide"); // scroll up → show
-        }
+  btn.addEventListener('click', ()=>{
+    const isLight = root.classList.contains('light');
+    setMode(isLight ? 'dark' : 'light');
+  });
+})();
 
-        lastScroll = current;
+/* -------------------------
+   Projects modal (delegation)
+   ------------------------- */
+(function projectModal(){
+  const modalBackdrop = document.getElementById('modalBackdrop');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalContent = document.getElementById('modalContent');
+  const modalTags = document.getElementById('modalTags');
+  const modalReport = document.getElementById('modalReport');
+  const modalDemo = document.getElementById('modalDemo');
+  const closeBtn = document.getElementById('modalClose');
+
+  function openModal(data){
+    modalTitle.textContent = data.title;
+    modalContent.textContent = data.desc;
+    modalTags.innerHTML = '';
+    (data.tags||'').split(',').map(t => t.trim()).filter(Boolean).forEach(t => {
+      const s = document.createElement('span');
+      s.className = 'chip';
+      s.textContent = t;
+      modalTags.appendChild(s);
     });
+    try {
+      const links = JSON.parse(data.links || '{}');
+      modalReport.href = links.report || '#';
+      modalDemo.href = links.demo || '#';
+    } catch(e) {
+      modalReport.href = '#';
+      modalDemo.href = '#';
+    }
+    modalBackdrop.classList.add('show');
+    modalBackdrop.setAttribute('aria-hidden','false');
+    // focus trap simple
+    closeBtn.focus();
+  }
+
+  function closeModal(){
+    modalBackdrop.classList.remove('show');
+    modalBackdrop.setAttribute('aria-hidden','true');
+  }
+
+  document.querySelectorAll('.project').forEach(el => {
+    el.addEventListener('click', ()=> {
+      const data = {
+        title: el.dataset.title,
+        desc: el.dataset.desc,
+        tags: el.dataset.tags,
+        links: el.dataset.links
+      };
+      openModal(data);
+    });
+    // allow keyboard open
+    el.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', (e)=>{
+    if (e.target === modalBackdrop) closeModal();
+  });
+  document.addEventListener('keydown', (e)=> {
+    if (e.key === 'Escape' && modalBackdrop.classList.contains('show')) closeModal();
+  });
+})();
+
+/* -------------------------
+   Contact form (uses Formspree)
+   - Replace YOUR_FORMSPREE_ID with actual ID
+   - Fallback: open mailto if sending fails
+   ------------------------- */
+(function contactForm(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  const mailFallback = document.getElementById('mailFallback');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const payload = {
+      name, email, message
+    };
+
+    // show sending state
+    status.textContent = 'Mengirim...';
+    status.className = 'form-status';
+
+    try {
+      // Note: replace formsEndpoint with your actual Formspree endpoint
+      const res = await fetch(formsEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ message: `Name: ${name}\nEmail: ${email}\n\n${message}` })
+      });
+
+      if (res.ok) {
+        status.textContent = 'Pesan berhasil dikirim. Terima kasih!';
+        status.style.background = 'var(--success)';
+        form.reset();
+      } else {
+        // treat as failure
+        throw new Error('failed');
+      }
+    } catch (err) {
+      status.textContent = 'Gagal mengirim otomatis — membuka email klien sebagai fallback.';
+      status.style.background = 'var(--danger)';
+      openMailClient(name, email, message);
+    }
+
+    setTimeout(()=> { status.textContent=''; status.className=''; status.style.background=''; }, 6000);
+  });
+
+  function openMailClient(name,email,message){
+    const subject = encodeURIComponent('Contact from Portfolio');
+    const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:alblacksweat@gmail.com?subject=${subject}&body=${body}`;
+  }
+
+  mailFallback.addEventListener('click', ()=>{
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    openMailClient(name,email,message);
+  });
+})();
+
+/* -------------------------
+   Accessibility: focus outlines for keyboard users
+   ------------------------- */
+(function focusVisible(){
+  function handleFirstTab(e) {
+    if (e.key === 'Tab') {
+      document.documentElement.classList.add('user-is-tabbing');
+      window.removeEventListener('keydown', handleFirstTab);
+    }
+  }
+  window.addEventListener('keydown', handleFirstTab);
+})();
+
+/* -------------------------
+   Small UI polish: ensure anchor hash focus
+   ------------------------- */
+(function hashFocus(){
+  if (location.hash) {
+    const el = document.querySelector(location.hash);
+    if (el) el.focus({preventScroll:false});
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      if (id && id.startsWith('#')) {
+        const el = document.querySelector(id);
+        if (el) el.focus({preventScroll:true});
+      }
+    });
+  });
+})();
 </script>
-
 </body>
 </html>
