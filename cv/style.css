@@ -1,0 +1,48 @@
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f111a;
+  color:#e9eef5;
+}
+
+.cv-header{
+  text-align:center;
+  padding:40px;
+  background:#11121a;
+}
+
+.cv-header h1{
+  color:#00ffab;
+}
+
+.cv-container{
+  max-width:900px;
+  margin:40px auto;
+  padding:30px;
+  background:#11121a;
+  border-radius:12px;
+}
+
+section{
+  margin-bottom:30px;
+}
+
+h2{
+  color:#00f0ff;
+  border-bottom:1px solid #333;
+  padding-bottom:6px;
+}
+
+.download-area{
+  text-align:center;
+  margin-top:40px;
+}
+
+button{
+  background:#00ffab;
+  border:none;
+  padding:12px 20px;
+  font-size:16px;
+  border-radius:8px;
+  cursor:pointer;
+}
