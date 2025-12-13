@@ -2,37 +2,39 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>CV - Hazdizdul A’la</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Hazdizdul A'la</title>
 
-<!-- html2pdf -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
-:root{
-  --blue:#00f0ff;
-  --dark:#0f111a;
-  --card:#11121a;
-  --text:#e9eef5;
-  --muted:#bfc7cf;
+/* ====== RESET ====== */
+*{
+  box-sizing:border-box;
 }
 
 body{
-  background:#000;
-  font-family:Arial, Helvetica, sans-serif;
-  color:var(--text);
   margin:0;
-  padding:20px;
+  background:#111;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-.cv{
-  max-width:850px;              /* AMAN UNTUK LEGAL */
+/* ====== KUNCI UKURAN LEGAL ====== */
+#cv{
+  width:216mm;
+  min-height:356mm;
   margin:auto;
-  background:var(--card);
-  padding:40px;
-  border-radius:14px;
+  background:#0f111a;
+  color:#e9eef5;
+  padding:15mm;
 }
 
+/* ====== WARNA ====== */
+:root{
+  --blue:#00f0ff;
+  --muted:#bfc7cf;
+}
+
+/* ====== HEADER ====== */
 .header{
   display:flex;
   justify-content:space-between;
@@ -41,52 +43,51 @@ body{
 
 .header h1{
   margin:0;
-  font-size:32px;
   color:var(--blue);
+  font-size:28px;
 }
 
 .header p{
-  margin:6px 0 0;
+  margin-top:6px;
   letter-spacing:3px;
 }
 
 .photo{
-  width:120px;
-  height:160px;
+  width:35mm;
+  height:45mm;
   background:#333;
-  border-radius:6px;
-  background-image:url("LINK-FOTO-DISINI"); /* GANTI NANTI */
+  background-image:url("LINK-FOTO-DISINI");
   background-size:cover;
   background-position:center;
 }
 
+/* ====== LINE ====== */
 .line{
   height:2px;
   background:var(--blue);
-  margin:25px 0;
+  margin:10mm 0;
 }
 
-.grid{
+/* ====== GRID ====== */
+.content{
   display:grid;
-  grid-template-columns:1fr 2fr;
-  gap:30px;
+  grid-template-columns:70mm auto;
+  gap:10mm;
 }
 
 h3{
   color:var(--blue);
-  margin-bottom:10px;
+  margin-bottom:4mm;
 }
 
-ul{
-  padding-left:18px;
-}
-
-ol{
-  padding-left:20px;
+ul, ol{
+  margin:0;
+  padding-left:5mm;
 }
 
 li{
-  margin-bottom:6px;
+  margin-bottom:2mm;
+  font-size:14px;
 }
 
 a{
@@ -94,29 +95,23 @@ a{
   text-decoration:none;
 }
 
-a:hover{
-  text-decoration:underline;
+/* ====== ANTI POTONG ====== */
+section, .content, .header{
+  page-break-inside:avoid;
 }
 
-.download{
-  margin-top:30px;
-  text-align:center;
-}
-
-button{
-  background:var(--blue);
-  border:none;
-  padding:10px 18px;
-  font-size:16px;
-  cursor:pointer;
-  border-radius:8px;
+/* ====== PRINT ====== */
+@media print{
+  body{
+    background:white;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div id="cvArea" class="cv">
+<div id="cv">
 
   <div class="header">
     <div>
@@ -128,95 +123,93 @@ button{
 
   <div class="line"></div>
 
-  <h3>PROFIL</h3>
-  <p>
-    Lulusan SMK Darussalam Plus Jurusan Teknik Komputer dan Jaringan.
-    Memiliki minat dan kemampuan di bidang Cyber Security, Network,
-    dan pengelolaan sistem.
-  </p>
+  <section>
+    <h3>PROFIL</h3>
+    <p>
+      Lulusan SMK Darussalam Plus Jurusan Teknik Komputer dan Jaringan
+      dengan minat pada Cyber Security dan Network Security.
+    </p>
+  </section>
 
   <div class="line"></div>
 
-  <div class="grid">
+  <div class="content">
 
     <!-- KIRI -->
-    <div>
+    <section>
       <h3>KONTAK</h3>
       <ul>
         <li>+62 877-7730-3499</li>
         <li>alblacksweat@gmail.com</li>
-        <li>Krama Jaya, Narmada – NTB</li>
+        <li>Narmada, Lombok Barat – NTB</li>
       </ul>
 
       <h3>PENDIDIKAN</h3>
-      <p><strong>SMK Darussalam Plus</strong><br>
-      Teknik Komputer dan Jaringan – 2018</p>
+      <p>
+        <strong>SMK Darussalam Plus</strong><br>
+        Teknik Komputer & Jaringan (2018)
+      </p>
 
       <h3>KEMAMPUAN</h3>
       <ul>
-        <li>Desain Grafis</li>
-        <li>Perbaikan Software & Hardware</li>
         <li>Cyber Security</li>
+        <li>Network Security</li>
+        <li>Desain Grafis</li>
       </ul>
-    </div>
+    </section>
 
     <!-- KANAN -->
-    <div>
+    <section>
       <h3>PENGALAMAN</h3>
       <ul>
-        <li><strong>Instruktur BLK Komunitas Darussalam</strong><br>
-        Desain Grafis (Corel Draw & Photoshop)</li>
-        <li><strong>PKD (Pengawas Kelurahan/Desa)</strong><br>
-        Pemilu 2024</li>
-        <li><strong>Staff Teknis – Anyprint</strong><br>
-        Mesin DTF & desain logo</li>
+        <li><strong>Instruktur BLK</strong> – Desain Grafis</li>
+        <li><strong>PKD</strong> – Pemilu 2024</li>
+        <li><strong>Staff Teknis Anyprint</strong></li>
       </ul>
 
       <h3>KURSUS & SERTIFIKAT</h3>
 
       <p><strong>Security Blue Team</strong></p>
       <ol>
-        <li><a href="https://LINK-SERTIFIKAT-1" target="_blank">Dark Web Operations</a></li>
-        <li><a href="https://LINK-SERTIFIKAT-2" target="_blank">OSINT</a></li>
-        <li><a href="https://LINK-SERTIFIKAT-3" target="_blank">Threat Hunting</a></li>
-        <li><a href="https://LINK-SERTIFIKAT-4" target="_blank">Network Analysis</a></li>
-        <li><a href="https://LINK-SERTIFIKAT-5" target="_blank">Digital Forensik</a></li>
-        <li><a href="https://LINK-SERTIFIKAT-6" target="_blank">Vulnerability Management</a></li>
-        <li><a href="https://LINK-SERTIFIKAT-7" target="_blank">Penetration Testing</a></li>
-      </ol>
-
-      <p><strong>ID-Networkers Jakarta</strong></p>
-      <ol>
-        <li><a href="https://LINK-IDN-1" target="_blank">Jaringan Komputer</a></li>
-        <li><a href="https://LINK-IDN-2" target="_blank">Cyber Security</a></li>
-        <li><a href="https://LINK-IDN-3" target="_blank">CompTIA Security+</a></li>
+        <li><a href="https://link1" target="_blank">Dark Web Operations</a></li>
+        <li><a href="https://link2" target="_blank">OSINT</a></li>
+        <li><a href="https://link3" target="_blank">Threat Hunting</a></li>
+        <li><a href="https://link4" target="_blank">Network Analysis</a></li>
+        <li><a href="https://link5" target="_blank">Digital Forensik</a></li>
+        <li><a href="https://link6" target="_blank">Vulnerability Management</a></li>
+        <li><a href="https://link7" target="_blank">Penetration Testing</a></li>
       </ol>
 
       <p><strong>Fortinet</strong></p>
       <ol>
-        <li><a href="https://LINK-FORTINET" target="_blank">
-          FCA – FortiGate 7.4 Operator (Self-Paced)
-        </a></li>
+        <li>
+          <a href="https://fortinet" target="_blank">
+            FCA – FortiGate 7.4 Operator
+          </a>
+        </li>
       </ol>
-    </div>
+    </section>
+
   </div>
 </div>
 
-<div class="download">
-  <button onclick="downloadPDF()">Download PDF (LEGAL)</button>
+<div style="text-align:center; margin:20px;">
+  <button onclick="downloadPDF()">Download PDF LEGAL</button>
 </div>
 
 <script>
 function downloadPDF(){
-  const element = document.getElementById('cvArea');
-
   html2pdf().set({
-    margin:10,
     filename:'CV-Hazdizdul-Ala.pdf',
-    html2canvas:{ scale:2, useCORS:true },
-    jsPDF:{ unit:'mm', format:'legal', orientation:'portrait' },
-    pagebreak:{ mode:['avoid-all','css','legacy'] }
-  }).from(element).save();
+    jsPDF:{
+      unit:'mm',
+      format:'legal',
+      orientation:'portrait'
+    },
+    html2canvas:{
+      scale:1.5
+    }
+  }).from(document.getElementById('cv')).save();
 }
 </script>
 
